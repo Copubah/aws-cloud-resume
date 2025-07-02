@@ -49,16 +49,11 @@
     cursor: default;
   }
   
-  .navbar {
-    display: flex;
-  }
-  
   .navbar a {
     font-size: 1.5rem;
     color: var(--text-color);
     margin-left: 4rem;
     font-weight: 700;
-    transition: 0.3s ease;
   }
   
   .navbar a:hover,
@@ -70,13 +65,14 @@
     font-size: 3.6rem;
     color: var(--text-color);
     display: none;
-    cursor: pointer;
   }
   
   .home {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
   }
   
   .home-content h3 {
@@ -88,6 +84,10 @@
     margin-bottom: 2rem;
   }
   
+  span {
+    color: var(--main-color);
+  }
+  
   .home-content h1 {
     font-size: 5.6rem;
     font-weight: 700;
@@ -96,10 +96,6 @@
   
   .home-content p {
     font-size: 1.6rem;
-  }
-  
-  span {
-    color: var(--main-color);
   }
   
   .social-media a {
@@ -129,9 +125,8 @@
     background: var(--main-color);
     border-radius: 4rem;
     box-shadow: 0 0 1rem var(--main-color);
-    font-size: 1rem;
+    font-size: 1.4rem;
     color: var(--bg-color);
-    letter-spacing: 0.1rem;
     font-weight: 600;
     transition: 0.3s ease;
   }
@@ -146,20 +141,23 @@
     align-items: center;
     gap: 2rem;
     background: var(--snd-bg-color);
+    flex-wrap: wrap;
+    text-align: center;
   }
   
   .heading {
     text-align: center;
     font-size: 6rem;
+    color: var(--text-color);
   }
   
   .about-content h2 {
-    text-align: left;
+    text-align: center;
     line-height: 1.2;
   }
   
   .about-content h3 {
-    font-size: 5rem;
+    font-size: 3.2rem;
   }
   
   .about-content p {
@@ -176,6 +174,7 @@
     gap: 2rem;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
   }
   
   .services-container .services-box {
@@ -185,6 +184,8 @@
     text-align: center;
     border: 0.2rem solid var(--bg-color);
     transition: 0.3s ease;
+    flex: 1 1 28rem;
+    max-width: 32rem;
   }
   
   .services-container .services-box:hover {
@@ -199,6 +200,7 @@
   
   .services-box h3 {
     font-size: 2.6rem;
+    margin-top: 1rem;
   }
   
   .services-box p {
@@ -213,8 +215,9 @@
   
   .certifications h2 {
     text-align: center;
-    font-size: 6rem;
+    font-size: 5rem;
     margin-bottom: 4rem;
+    color: var(--text-color);
   }
   
   .cert-container {
@@ -230,19 +233,14 @@
     border-radius: 2rem;
     padding: 3rem 2rem;
     text-align: center;
-    flex: 1 1 30rem;
+    flex: 1 1 25rem;
+    max-width: 30rem;
     transition: 0.3s ease;
   }
   
   .cert-box:hover {
     border-color: var(--main-color);
     transform: scale(1.02);
-  }
-  
-  .cert-box i {
-    font-size: 5rem;
-    color: var(--main-color);
-    margin-bottom: 1rem;
   }
   
   .cert-box h3 {
@@ -263,6 +261,8 @@
   
   .contact h2 {
     margin-bottom: 3rem;
+    text-align: center;
+    font-size: 5rem;
   }
   
   .contact form {
@@ -324,7 +324,7 @@
     transition: 0.3s ease;
   }
   
-  .footer-iconTop a:hover {
+  .footer-iconTop:hover {
     box-shadow: 0 0 1rem var(--main-color);
   }
   
@@ -333,7 +333,7 @@
     color: var(--snd-bg-color);
   }
   
-  /* Responsive Design */
+  /* Responsive */
   @media (max-width: 1200px) {
     html {
       font-size: 55%;
@@ -350,24 +350,16 @@
     }
   
     .services {
-      padding: 7rem;
-    }
-  
-    .portfolio {
-      padding-bottom: 7rem;
+      padding: 7rem 3%;
     }
   }
   
   @media (max-width: 768px) {
     .home,
     .about,
-    .services-container {
+    .services-container,
+    .cert-container {
       flex-direction: column;
-      text-align: center;
-    }
-  
-    .contact form .input-box input {
-      width: 100%;
     }
   
     .home-content h1 {
@@ -386,29 +378,12 @@
       font-size: 2rem;
     }
   
-    #menu-icon {
-      display: block;
-    }
-  
-    .navbar {
-      display: none;
-      flex-direction: column;
-      background: var(--bg-color);
-      position: absolute;
-      top: 100%;
-      left: 0;
+    .contact form .input-box input {
       width: 100%;
-      padding: 2rem 0;
-      z-index: 99;
     }
   
-    .navbar.active {
-      display: flex;
-    }
-  
-    .navbar a {
-      margin: 1.5rem 0;
-      font-size: 1.8rem;
+    .cert-box {
+      width: 90%;
     }
   }
   
@@ -426,10 +401,6 @@
       flex-direction: column;
       gap: 1.5rem;
       text-align: center;
-    }
-  
-    .footer-iconTop {
-      margin-top: 1rem;
     }
   
     .btn {
