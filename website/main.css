@@ -297,3 +297,111 @@ line-height: 1.2;
     }
 
 }
+
+
+@media (max-width: 768px) {
+    .home {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .services-container {
+        flex-direction: column;
+    }
+
+    .contact form .input-box input {
+        width: 100%;
+    }
+
+    .home-content h1 {
+        font-size: 4rem;
+    }
+
+    .home-content h3 {
+        font-size: 2.5rem;
+    }
+
+    .about-content h3 {
+        font-size: 3.5rem;
+    }
+
+    .about-content p {
+        font-size: 2rem;
+    }
+}
+
+.certifications {
+    padding: 10rem 9% 2rem;
+    background: var(--snd-bg-color);
+}
+
+.cert-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.cert-box {
+    background: var(--bg-color);
+    border: .2rem solid var(--bg-color);
+    border-radius: 2rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    flex: 1 1 30rem;
+    transition: 0.3s ease;
+}
+
+.cert-box:hover {
+    border-color: var(--main-color);
+    transform: scale(1.02);
+}
+
+.cert-box i {
+    font-size: 5rem;
+    color: var(--main-color);
+    margin-bottom: 1rem;
+}
+
+.cert-box h3 {
+    font-size: 2.2rem;
+    margin: 1rem 0;
+}
+
+.cert-box p {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+
+
+@media (max-width: 450px) {
+    html {
+        font-size: 50%;
+    }
+
+    .navbar a {
+        margin-left: 2rem;
+        font-size: 1.2rem;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .footer-iconTop {
+        margin-top: 1rem;
+    }
+
+    .btn {
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
+    }
+}
