@@ -14,14 +14,74 @@ This portfolio showcases my journey as a Cloud Support Engineer, featuring:
 
 ## Architecture
 
-Current Infrastructure:
-- S3 Static Website Hosting - Hosts the portfolio files with public read access
-- Terraform IaC - Automated infrastructure provisioning and management
+### Current Architecture
+
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Developer     │    │    GitHub        │    │   GitHub        │
+│   Local Dev     │───▶│   Repository     │───▶│   Actions       │
+│                 │    │                  │    │   CI/CD         │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                                                         │
+                                                         │ Deploy
+                                                         ▼
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   End Users     │    │      AWS         │    │      AWS        │
+│   (Visitors)    │◀───│   S3 Bucket      │◀───│   Credentials   │
+│                 │    │  Static Website  │    │   (Secrets)     │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                              │
+                              │ HTTP
+                              ▼
+                       ┌──────────────────┐
+                       │   Website Files  │
+                       │   - index.html   │
+                       │   - main.css     │
+                       │   - app.js       │
+                       │   - assets/      │
+                       └──────────────────┘
+```
+
+### Planned Enhanced Architecture
+
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Developer     │    │    GitHub        │    │   GitHub        │
+│   Local Dev     │───▶│   Repository     │───▶│   Actions       │
+│                 │    │                  │    │   CI/CD         │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                                                         │
+                                                         │ Deploy
+                                                         ▼
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   End Users     │    │   CloudFront     │    │      AWS        │
+│   (Global)      │◀───│   CDN + HTTPS    │◀───│   S3 Bucket     │
+│                 │    │                  │    │  Static Website │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+         │                       │                       │
+         │                       │                       │
+         ▼                       ▼                       ▼
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Custom Domain │    │   SSL/TLS Cert   │    │   Website Files │
+│   (Route 53)    │    │   (ACM)          │    │   - index.html  │
+│                 │    │                  │    │   - main.css    │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+```
+
+### Infrastructure Components
+
+Current Implementation:
+- S3 Bucket: opubacharles - Static website hosting
+- Terraform: Infrastructure as Code for provisioning
+- GitHub Actions: Automated deployment pipeline
+- GitHub Repository: Source code and version control
 
 Planned Enhancements:
-- CloudFront CDN for global performance and HTTPS
-- Route 53 for custom domain management
-- AWS Certificate Manager for SSL certificates
+- CloudFront: Global CDN for performance and HTTPS
+- Route 53: DNS management for custom domain
+- ACM: SSL certificate for secure connections
+- DynamoDB: Visitor counter (future enhancement)
+- Lambda: API for visitor tracking (future enhancement)
 
 ## Tech Stack
 
@@ -95,13 +155,30 @@ The Terraform configuration creates:
 - Bucket policy for public read access
 - Proper ownership controls and public access settings
 
+## Data Flow
+
+### Current Flow
+1. Developer pushes code to GitHub
+2. GitHub Actions triggers on push to master
+3. Workflow authenticates with AWS using secrets
+4. Files are synced to S3 bucket
+5. Users access website via S3 static website endpoint
+
+### Enhanced Flow (Planned)
+1. Developer pushes code to GitHub
+2. GitHub Actions deploys to S3 and invalidates CloudFront
+3. Users access custom domain (Route 53)
+4. Route 53 routes to CloudFront distribution
+5. CloudFront serves cached content globally with HTTPS
+6. CloudFront fetches from S3 origin when needed
+
 ## Future Enhancements
 
-- [ ] Add CloudFront distribution for HTTPS and global CDN
-- [ ] Implement custom domain with Route 53
-- [ ] Add visitor counter with DynamoDB and Lambda
-- [ ] Set up CI/CD pipeline with GitHub Actions
-- [ ] Add monitoring with CloudWatch
+- Add CloudFront distribution for HTTPS and global CDN
+- Implement custom domain with Route 53
+- Add visitor counter with DynamoDB and Lambda
+- Set up CI/CD pipeline with GitHub Actions
+- Add monitoring with CloudWatch
 
 ## Contributing
 
