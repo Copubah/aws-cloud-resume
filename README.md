@@ -1,84 +1,123 @@
 # AWS Cloud Resume Challenge
-- This repository contains the code and infrastructure for hosting my personal resume website on AWS using Terraform. The website is built with HTML and CSS and is hosted on Amazon S3. It is served through Amazon CloudFront for improved performance and security. The infrastructure is provisioned as code using Terraform, demonstrating my ability to work with AWS cloud services and Infrastructure as Code (IaC)
+
+A modern, responsive portfolio website built as part of the AWS Cloud Resume Challenge. This project demonstrates cloud engineering skills by deploying a professional resume website using AWS services and Infrastructure as Code (IaC) with Terraform.
+
+**Live Site**: [opubacharles.s3-website-us-east-1.amazonaws.com](http://opubacharles.s3-website-us-east-1.amazonaws.com/)
 
 ## Project Overview
-- This project is part of the AWS Cloud Resume Challenge, which demonstrates cloud skills by deploying a simple personal resume website on AWS. The website is designed to showcase my professional experience and skills, with the deployment and infrastructure entirely managed through Terraform.
 
- ## Infrastructure includes:
-- S3 Bucket: Used to host the static website.
-- CloudFront: A Content Delivery Network (CDN) for improved global performance and secure HTTPS delivery.
-- Route 53 (optional): For managing DNS and pointing a custom domain to CloudFront
+This portfolio showcases my journey as a Cloud Support Engineer, featuring:
+- AWS Certified Cloud Practitioner certification
+- Cloud projects including 3-tier architecture and FastAPI deployments
+- Preparation for AWS Solutions Architect Associate and Terraform Associate certifications
+- AWS re/Start program graduate experience
 
+## Architecture
 
-## Requirements
-1. Terraform: To provision the infrastructure.
-2. AWS Account: To deploy the infrastructure on AWS.
-3. Domain Name (optional): A custom domain name to point to the CloudFront distribution.
-4. AWS Certificate Manager (ACM): To issue an SSL certificate for HTTPS.
+Current Infrastructure:
+- S3 Static Website Hosting - Hosts the portfolio files with public read access
+- Terraform IaC - Automated infrastructure provisioning and management
 
-## Setup Instructions
-1. Clone the Repository
- - git clone https://github.com/Copubah/aws-cloud-resume
- - cd aws-cloud-resume
+Planned Enhancements:
+- CloudFront CDN for global performance and HTTPS
+- Route 53 for custom domain management
+- AWS Certificate Manager for SSL certificates
 
-2. Install Terraform
-- If you don’t have Terraform installed, follow the instructions from the Terraform official website to install it on your machine.
+## Tech Stack
 
-3. Configure AWS CLI
-- Ensure that the AWS CLI is configured with the appropriate credentials. If you haven’t already, run the following command and follow the instructions:
-  - aws configure
+Frontend:
+- HTML5 with semantic structure
+- CSS3 with custom properties and responsive design
+- Vanilla JavaScript for interactive navigation
+- Font Awesome icons
 
-4. Initialize Terraform
-- Initialize Terraform to download the necessary providers and dependencies
- - terraform init
+Infrastructure:
+- AWS S3 for static website hosting
+- Terraform for Infrastructure as Code
+- GitHub for version control and CI/CD
 
-5. Plan the Deployment
-- Terraform will show a plan of what resources it intends to create. Review this plan to ensure everything is correct:
- - terraform plan
+## Prerequisites
 
+- [Terraform](https://www.terraform.io/downloads.html) installed
+- AWS CLI configured with appropriate credentials
+- AWS account with S3 permissions
 
-6. Apply the Configuration
-- Apply the Terraform configuration to create the resources in AWS:
-  - terraform apply
+## Quick Start
 
-7. Access Your Resume Website
-Once the deployment is complete, Terraform will output the URL of the website. You can access your resume website using the provided CloudFront URL.
-If you configured a custom domain and Route 53, your website will be accessible at that domain (e.g., www.charlesopuba.com).
+1. Clone the repository
+   ```bash
+   git clone https://github.com/Copubah/aws-cloud-resume
+   cd aws-cloud-resume
+   ```
 
-## Structure of the Project
-1. main.tf
-This is the main Terraform configuration file. It defines all AWS resources like the S3 bucket for hosting the website, the CloudFront distribution for CDN, and the Route 53 DNS record for domain management.
+2. Configure AWS credentials
+   ```bash
+   aws configure
+   ```
 
-2. variables.tf
-This file contains the variables used in the Terraform configuration, such as the AWS region, S3 bucket name, domain name, and ACM certificate ARN.
+3. Deploy infrastructure
+   ```bash
+   terraform init
+   terraform plan
+   terraform apply
+   ```
 
-3. outputs.tf
-This file outputs useful information, such as the CloudFront distribution URL, after Terraform has applied the changes.
+4. Access your site
+   - Terraform will output the S3 website URL
+   - Upload website files to the created S3 bucket
 
-4. website/
-This folder contains the static website files:
+## Project Structure
 
-index.html: The main HTML file for the resume.
+```
+├── main.tf              # Terraform infrastructure configuration
+├── variables.tf         # Terraform variables (if needed)
+├── outputs.tf          # Terraform outputs
+├── website/            # Static website files
+│   ├── index.html      # Main portfolio page
+│   ├── main.css        # Responsive styling
+│   ├── app.js          # Interactive navigation
+│   └── assets/         # Images and certificates
+└── README.md           # Project documentation
+```
 
-style.css: Basic CSS for styling the website.
+## Features
 
-app.js :For the logic
+- Responsive Design - Mobile-first approach with smooth animations
+- Professional Layout - Clean sections for about, projects, certifications, and contact
+- Interactive Navigation - Smooth scrolling with active section highlighting
+- Contact Form - Integrated with Formspree for message handling
+- Social Links - Direct links to LinkedIn and GitHub profiles
 
-5. README.md
-This file provides instructions on setting up the project, deploying the infrastructure, and accessing the resume website.
+## Infrastructure Details
 
-## Additional Notes
-- HTTPS: If you are using a custom domain, ensure you have an SSL certificate for the domain in AWS Certificate Manager. The acm_certificate_arn must point to that certificate in the variables.tf file.
+The Terraform configuration creates:
+- S3 bucket with static website hosting enabled
+- Bucket policy for public read access
+- Proper ownership controls and public access settings
 
-- Route 53: If you're using Route 53 for DNS, make sure you have set up a hosted zone and the appropriate record.
+## Future Enhancements
 
-- S3 Public Access: Ensure that the S3 bucket's permissions are set to allow public access to the files.
+- [ ] Add CloudFront distribution for HTTPS and global CDN
+- [ ] Implement custom domain with Route 53
+- [ ] Add visitor counter with DynamoDB and Lambda
+- [ ] Set up CI/CD pipeline with GitHub Actions
+- [ ] Add monitoring with CloudWatch
 
 ## Contributing
-Feel free to fork the repository, submit issues, or create pull requests. Contributions and suggestions are welcome!
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Copubah/aws-cloud-resume/issues).
 
 ## License
-This project is licensed under the MIT License – see the LICENSE file for details.
 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-# Triggering first workflow run
+## Contact
+
+Charles Opuba - Cloud Support Engineer
+- LinkedIn: [charles-opuba-94820574](https://www.linkedin.com/in/charles-opuba-94820574/)
+- GitHub: [@Copubah](https://github.com/Copubah)
+- Email: Available through the contact form on the website
+
+---
+
+Built with cloud technologies and deployed on AWS
