@@ -1,51 +1,219 @@
-resource "aws_s3_bucket" "resume_bucket" {
-  bucket = "opubacharles"
-  
-  # Website configuration
-  website {
-    index_document = "index.html"
-    error_document = "index.html"
-  }
+# ---------------------------------------------------------
+# S3 BUCKET
+# ---------------------------------------------------------
+
+resource "aws_s3_bucket" "portfolio" {
+  bucket = var.bucket_name
 
   tags = {
-    Project = "Cloud Resume"
-    Owner   = "Charles Opuba"
+    Name        = "Charles Portfolio"
+    Environment = "production"
+    Project     = "aws-cloud-resume"
   }
 }
 
-resource "aws_s3_bucket_ownership_controls" "resume_bucket_ownership" {
-  bucket = aws_s3_bucket.resume_bucket.id
-  
+
+# ---------------------------------------------------------
+# S3 BUCKET OWNERSHIP
+# ---------------------------------------------------------
+
+resource "aws_s3_bucket_ownership_controls" "portfolio" {
+  bucket = aws_s3_bucket.portfolio.id
+
   rule {
-    object_ownership = "BucketOwnerPreferred"
+    object_ownership = "BucketOwnerEnforced"
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "resume_bucket_public_access" {
-  bucket = aws_s3_bucket.resume_bucket.id
 
-  block_public_acls   = false
-  ignore_public_acls  = false
-  block_public_policy = false
-  restrict_public_buckets = false
+# ---------------------------------------------------------
+# S3 PUBLIC ACCESS BLOCK
+# ---------------------------------------------------------
+
+resource "aws_s3_bucket_public_access_block" "portfolio" {
+  bucket = aws_s3_bucket.portfolio.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_policy" "resume_bucket_policy" {
-  bucket = aws_s3_bucket.resume_bucket.id
 
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect    = "Allow"
-        Principal = "*"
-        Action    = "s3:GetObject"
-        Resource  = "${aws_s3_bucket.resume_bucket.arn}/*"
-      }
+# ---------------------------------------------------------
+# S3 VERSIONING
+# ---------------------------------------------------------
+
+resource "aws_s3_bucket_versioning" "portfolio" {
+  bucket = aws_s3_bucket.portfolio.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+
+# ---------------------------------------------------------
+# CLOUDFRONT ORIGIN ACCESS CONTROL
+# ---------------------------------------------------------
+
+resource "aws_cloudfront_origin_access_control" "portfolio" {
+  name                              = "portfolio-oac"
+  description                       = "Origin Access Control for portfolio S3 bucket"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
+
+
+# ---------------------------------------------------------
+# CLOUD POLICY DOCUMENT
+# Allows CloudFront to read objects from the private S3 bucket
+# ---------------------------------------------------------
+
+data "aws_iam_policy_document" "portfolio" {
+
+  statement {
+    sid    = "AllowCloudFrontServicePrincipalReadOnly"
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
+    }
+
+    actions = [
+      "s3:GetObject"
     ]
-  })
+
+    resources = [
+      "${aws_s3_bucket.portfolio.arn}/*"
+    ]
+
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+
+      values = [
+        aws_cloudfront_distribution.portfolio.arn
+      ]
+    }
+  }
 }
 
-output "website_url" {
-  value = aws_s3_bucket.resume_bucket.website_endpoint
+
+# ---------------------------------------------------------
+# S3 BUCKET POLICY
+# ---------------------------------------------------------
+
+resource "aws_s3_bucket_policy" "portfolio" {
+  bucket = aws_s3_bucket.portfolio.id
+  policy = data.aws_iam_policy_document.portfolio.json
+
+  depends_on = [
+    aws_s3_bucket_public_access_block.portfolio
+  ]
+}
+
+
+# ---------------------------------------------------------
+# CLOUDFRONT DISTRIBUTION
+# ---------------------------------------------------------
+
+resource "aws_cloudfront_distribution" "portfolio" {
+
+  enabled = true
+
+  comment = "Charles Opuba AWS Cloud Resume Portfolio"
+
+  default_root_object = "index.html"
+
+
+  # -------------------------------------------------------
+  # S3 ORIGIN
+  # -------------------------------------------------------
+
+  origin {
+    domain_name = aws_s3_bucket.portfolio.bucket_regional_domain_name
+
+    origin_id = "S3-${aws_s3_bucket.portfolio.id}"
+
+    origin_access_control_id = aws_cloudfront_origin_access_control.portfolio.id
+  }
+
+
+  # -------------------------------------------------------
+  # DEFAULT CACHE BEHAVIOR
+  # -------------------------------------------------------
+
+  default_cache_behavior {
+
+    allowed_methods = [
+      "GET",
+      "HEAD"
+    ]
+
+    cached_methods = [
+      "GET",
+      "HEAD"
+    ]
+
+    target_origin_id = "S3-${aws_s3_bucket.portfolio.id}"
+
+    viewer_protocol_policy = "redirect-to-https"
+
+
+    forwarded_values {
+      query_string = false
+
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+
+  # -------------------------------------------------------
+  # GEO RESTRICTIONS
+  # -------------------------------------------------------
+
+  restrictions {
+
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+
+  # -------------------------------------------------------
+  # HTTPS
+  # Uses CloudFront's default certificate
+  # No custom domain required
+  # -------------------------------------------------------
+
+  viewer_certificate {
+    cloudfront_default_certificate = true
+  }
+
+
+  # -------------------------------------------------------
+  # ERROR RESPONSES
+  # -------------------------------------------------------
+
+  custom_error_response {
+    error_code         = 404
+    response_code      = 404
+    response_page_path = "/index.html"
+  }
+
+
+  # -------------------------------------------------------
+  # TAGS
+  # -------------------------------------------------------
+
+  tags = {
+    Name        = "Charles Portfolio CloudFront"
+    Environment = "production"
+    Project     = "aws-cloud-resume"
+  }
 }

@@ -7,4 +7,5 @@ variable "region" {
 variable "bucket_name" {
   description = "The name of the S3 bucket"
   type        = string
+  default     = "opubacharles-portfolio-623244137074"
 }

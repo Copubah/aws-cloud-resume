@@ -1,28 +1,39 @@
 # Terraform state files
 *.tfstate
-*.tfstate.backup
+*.tfstate.*
 
-# Terraform lock files
+# Terraform lock file
 .terraform.lock.hcl
 
-# Local Terraform working directory
+# Terraform working directory
 .terraform/
 
 # Sensitive variable files
-terraform.tfvars
-*.auto.tfvars
-*.auto.tfvars.json
+*.tfvars
+*.tfvars.json
 
-# Terraform plan files
+# Terraform plan output
 *.tfplan
 
-# Lambda packaging
+# Crash logs
+crash.log
+crash.*.log
+
+# Lambda packaging artifacts
 lambda.zip
 
-# Editor or IDE specific files
+# Environment variable files
+.env
+.env.*
+
+# AWS credentials
+.aws/
+credentials
+
+# Editor / OS artifacts
 .idea/
 .vscode/
 *.swp
 *.bak
 *.tmp
-*.DS_Store
+.DS_Store

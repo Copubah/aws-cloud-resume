@@ -1,0 +1,5 @@
+# Copy this file to terraform.tfvars and fill in your values.
+# terraform.tfvars is excluded from Git via .gitignore.
+
+region      = "us-east-1"
+bucket_name = "opubacharles-portfolio-623244137074"
