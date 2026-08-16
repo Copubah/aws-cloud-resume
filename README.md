@@ -4,7 +4,7 @@ A professional cloud engineering portfolio for Charles Opuba, built as part of t
 
 The website is hosted on a private S3 bucket and served globally through CloudFront with HTTPS, provisioned entirely with Terraform and deployed automatically via GitHub Actions using OIDC authentication.
 
-Live site: https://xxxxxxxxxxxx.cloudfront.net (URL is output after terraform apply)
+Live site: https://d7kla1ca2zt2q.cloudfront.net
 
 ---
 
