@@ -85,7 +85,7 @@ jobs:
         run: |
           aws s3 sync website/ s3://${{ env.BUCKET_NAME }}/ \
             --delete \
-            --cache-control "max-age=86400"
+            --cache-control "no-cache, no-store, must-revalidate"
 
       # -------------------------------------------------------
       # 10. Invalidate CloudFront cache
