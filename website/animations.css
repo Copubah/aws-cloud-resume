@@ -1,0 +1,130 @@
+/* Purposeful motion enhancements. Reduced-motion preferences are respected below. */
+.reveal {
+  transition-delay: calc(var(--reveal-order, 0) * 70ms);
+}
+
+.status-dot {
+  animation: status-pulse 2.4s ease-out infinite;
+}
+
+.hero-console.visible {
+  animation: console-float 6s ease-in-out .8s infinite;
+}
+
+.hero-console.visible .console-row,
+.hero-console.visible .complete {
+  opacity: 0;
+  animation: console-line .45s ease forwards;
+}
+
+.hero-console.visible .console-row:nth-of-type(1) { animation-delay: .25s; }
+.hero-console.visible .console-row:nth-of-type(2) { animation-delay: .4s; }
+.hero-console.visible .console-row:nth-of-type(3) { animation-delay: .55s; }
+.hero-console.visible .console-row:nth-of-type(4) { animation-delay: .7s; }
+.hero-console.visible .complete { animation-delay: .9s; }
+
+.featured-project,
+.project-row,
+.credential,
+.role,
+.arch-node,
+.skills span {
+  transition: transform .25s ease, border-color .25s ease, background-color .25s ease, box-shadow .25s ease;
+}
+
+.featured-project:hover {
+  box-shadow: 0 24px 55px rgba(7, 18, 15, .16);
+  transform: translateY(-4px);
+}
+
+.project-row:hover {
+  transform: translateX(8px);
+}
+
+.project-row:hover h3,
+.credential:hover h3 {
+  color: #315f50;
+}
+
+.credential:hover {
+  transform: translateX(6px);
+}
+
+.role:hover {
+  border-color: rgba(49, 95, 80, .5);
+}
+
+.skills span:hover {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: var(--ink);
+  transform: translateY(-3px);
+}
+
+.arch-node:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, .5);
+}
+
+.brand-mark {
+  transition: transform .35s ease, background-color .35s ease;
+}
+
+.brand:hover .brand-mark {
+  transform: rotate(-8deg) scale(1.08);
+  background: #315f50;
+}
+
+@keyframes status-pulse {
+  0%, 100% { box-shadow: 0 0 0 5px rgba(64, 181, 117, .14); }
+  50% { box-shadow: 0 0 0 10px rgba(64, 181, 117, 0); }
+}
+
+@keyframes console-float {
+  0%, 100% { transform: rotate(1.5deg) translateY(0); }
+  50% { transform: rotate(.5deg) translateY(-10px); }
+}
+
+@keyframes console-line {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 850px) {
+  .hero-console.visible {
+    animation-name: console-float-mobile;
+  }
+
+  @keyframes console-float-mobile {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+  }
+}
+
+@media (hover: none) {
+  .featured-project:hover,
+  .project-row:hover,
+  .credential:hover,
+  .skills span:hover,
+  .arch-node:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition-delay: 0s;
+  }
+
+  .status-dot,
+  .hero-console.visible,
+  .hero-console.visible .console-row,
+  .hero-console.visible .complete {
+    animation: none;
+  }
+
+  .hero-console.visible .console-row,
+  .hero-console.visible .complete {
+    opacity: 1;
+  }
+}

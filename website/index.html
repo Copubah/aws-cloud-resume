@@ -1,157 +1,161 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Charles Opuba | Cloud Support Engineer</title>
-  <link rel="stylesheet" href="main.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Charles Opuba is a cloud support engineer building secure, automated infrastructure on AWS.">
+  <meta name="theme-color" content="#07120f">
+  <title>Charles Opuba — Cloud Support Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="experience.css">
+  <link rel="stylesheet" href="animations.css">
+  <script src="app.js" defer></script>
 </head>
-
 <body>
-  <!-- Header -->
-  <header class="header">
-    <a href="#" class="logo">Charles Opuba</a>
-    <i class="fa-solid fa-bars" id="menu-icon"></i>
-    <nav class="navbar">
-      <a href="#home" class="active">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#contact">Contact</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="#home" aria-label="Charles Opuba, home"><span class="brand-mark" aria-hidden="true">CO</span><span>Charles Opuba</span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button><span class="sr-only">Toggle navigation</span><span></span><span></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Work</a><a href="#credentials">Credentials</a><a class="nav-cta" href="#contact">Let's talk</a>
     </nav>
   </header>
 
-  <!-- Home Section -->
-  <section class="home" id="home">
-    <div class="home-content">
-      <h3>Hello, my name is</h3>
-      <h1>Charles Opuba</h1>
-      <h3>I'm a <span>Cloud Support Engineer</span></h3>
-      <p>
-        Welcome to my portfolio. I’m passionate about cloud computing with hands-on experience in AWS and Azure. I enjoy building scalable, secure, and automated infrastructure.
-      </p>
-      <div class="social-media">
-        <a href="https://www.linkedin.com/in/charles-opuba-94820574/" target="_blank">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
-        <a href="https://github.com/Copubah" target="_blank">
-          <i class="fa-brands fa-github"></i>
-        </a>
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="status-dot"></span> Open to cloud support opportunities</p>
+        <h1 id="hero-title">I make cloud systems<br><em>clear, secure, and reliable.</em></h1>
+        <p class="hero-intro">I'm Charles, a Cloud and Production Support Engineer focused on AWS infrastructure, automation, observability, and reliability. I enjoy the calm, methodical troubleshooting that keeps systems running, from tracing application and connectivity issues to automating infrastructure and improving how systems are monitored and operated. My toolkit includes AWS, Linux, networking, Terraform, Docker, Kubernetes, Python, Bash, and CI/CD, with a strong interest in building resilient systems and solving problems in production.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">Explore my work</a>
+          <a class="text-link" href="https://github.com/Copubah" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="text-link" href="https://www.linkedin.com/in/charles-opuba-94820574/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
       </div>
-      <a href="Charles_Opuba_CV.pdf" download class="btn">Download CV</a>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about" id="about">
-    <h2 class="heading">About <span>Me</span></h2>
-    <h3>Cloud Support Engineer</h3>
-    <p>
-      I'm a certified Cloud Engineer with a strong foundation in AWS services, infrastructure automation, and DevOps tooling. I hold the AWS Cloud Practitioner certification and I'm preparing for the Solutions Architect Associate and Terraform Associate exams. I’m also an AWS re/Start graduate trained in Linux, Python, networking, and soft skills for cloud roles.
-    </p>
-    <a href="#projects" class="btn">Explore Projects</a>
-  </section>
-
-  <!-- Projects Section -->
-  <section class="projects" id="projects">
-    <h2 class="heading">My <span>Projects</span></h2>
-    <div class="services-container">
-      <div class="services-box">
-        <i class="fa-brands fa-aws"></i>
-        <h3>Cloud Resume Challenge</h3>
-        <p>
-          Built a resume site hosted on S3 with visitor tracking via DynamoDB, API Gateway, and Lambda.
-        </p>
-        <a href="http://opubacharles.s3-website-us-east-1.amazonaws.com/" class="btn" target="_blank">View Live</a>
+      <div class="hero-console reveal" aria-label="Cloud deployment summary">
+        <div class="console-bar"><span></span><span></span><span></span><p>portfolio.deploy</p></div>
+        <div class="console-body">
+          <p><span class="prompt">$</span> terraform apply</p><p class="muted">Building secure edge delivery...</p>
+          <div class="console-row"><span>Private S3 origin</span><strong>READY</strong></div><div class="console-row"><span>CloudFront + HTTPS</span><strong>READY</strong></div><div class="console-row"><span>GitHub OIDC</span><strong>READY</strong></div><div class="console-row"><span>Automated delivery</span><strong>READY</strong></div>
+          <p class="complete">Apply complete. Infrastructure is live.</p>
+        </div>
       </div>
-      <div class="services-box">
-        <i class="fa-solid fa-server"></i>
-        <h3>FastAPI + PostgreSQL Deployment</h3>
-        <p>
-          Deployed a FastAPI app on cloud VMs with PostgreSQL and automated it with shell scripts and firewall rules.
-        </p>
-        <a href="https://github.com/Copubah/fastapi-app" class="btn" target="_blank">GitHub</a>
+      <div class="hero-foot"><p>Based in Nairobi, Kenya <span>|</span> Working globally</p><a href="#about" aria-label="Scroll to about section">Scroll to discover</a></div>
+    </section>
+
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="section-label reveal"><span>01</span> About</div>
+      <div class="about-grid">
+        <h2 class="section-title reveal" id="about-title">Support-minded.<br><span>Builder-driven.</span></h2>
+        <div class="about-copy reveal">
+          <p class="lead">Cloud infrastructure and reliability engineer with hands-on experience across AWS, Linux, networking, Terraform, Docker, Kubernetes, Python, Bash, and CI/CD.</p>
+          <p>I specialize in turning ambiguous technical problems into observable, repeatable solutions: troubleshooting connectivity and application issues, analyzing logs, strengthening observability, automating infrastructure with Terraform, and building reliable deployment pipelines.</p>
+          <p>My AWS experience covers EC2, S3, RDS, Lambda, IAM, VPC, and CloudWatch, with a focus on infrastructure as code, security, monitoring, automation, and fault-tolerant architecture. As an AWS Community Builder in Cloud Operations, I continue sharpening my cloud architecture and reliability engineering skills through hands-on projects that mirror real production environments.</p>
+        </div>
       </div>
-      <div class="services-box">
-        <i class="fa-solid fa-code"></i>
-        <h3>3-Tier Architecture-demo</h3>
-        <p>
-          Designed and deployed a 3-tier app on AWS with separation of presentation, logic, and data layers.
-        </p>
-        <a href="https://github.com/Copubah/3-tier-architecture-demo" class="btn" target="_blank">GitHub</a>
+      <div class="skills reveal" aria-label="Technical skills"><span>AWS</span><span>Terraform</span><span>Linux</span><span>Docker</span><span>Kubernetes</span><span>Python</span><span>Bash</span><span>Networking</span><span>CI/CD</span><span>GitHub Actions</span><span>Observability</span><span>Production Support</span></div>
+    </section>
+
+    <section class="section experience" id="experience" aria-labelledby="experience-title">
+      <div class="section-label reveal"><span>02</span> Professional experience</div>
+      <div class="experience-heading reveal">
+        <h2 class="section-title" id="experience-title">Production-focused.<br><span>Reliability-led.</span></h2>
+        <p>Hands-on experience supporting cloud environments, resolving production incidents, and delivering reliable software systems.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Certifications Section -->
-  <section class="certifications" id="certifications">
-    <h2 class="heading">My <span>Certifications</span></h2>
-    <div class="cert-container">
-
-      <!-- AWS CCP -->
-      <div class="cert-box">
-        <img src="assets/aws ccp.jpeg" alt="AWS CCP Badge" style="width:100px; height:auto; margin-bottom:1rem;">
-        <h3>AWS Certified Cloud Practitioner</h3>
-        <p>Issued by AWS in 2025</p>
-        <a href="https://www.credly.com/earner/earned/badge/36098b34-bfce-40f4-aea9-0a2af6c0053e" class="btn" target="_blank">View Credential</a>
+      <div class="timeline">
+        <article class="role reveal">
+          <div class="role-meta"><p>Jan 2025 - Present</p><span>Remote</span></div>
+          <div class="role-body">
+            <p class="role-type">Freelance</p><h3>Production Support Engineer</h3>
+            <ul>
+              <li>Run structured daily health-check and monitoring cycles across enterprise AWS environments, including EC2, RDS, Lambda, ECS, and CloudFront, catching configuration drift and performance issues before they affect end users.</li>
+              <li>Own the full incident lifecycle: ticket intake, CloudWatch log analysis, root-cause identification, fix deployment, and post-incident documentation while meeting defined SLA commitments.</li>
+              <li>Configure and maintain IAM policies and security groups in line with security best practices, flagging and escalating vulnerabilities to reduce risk exposure.</li>
+              <li>Maintain CI/CD pipelines and infrastructure-as-code deployments using Terraform, EventBridge, and Lambda to support controlled, auditable changes and scheduled updates.</li>
+              <li>Write SQL queries in PostgreSQL and MySQL to validate data integrity and reconcile records during operational investigations.</li>
+              <li>Author incident runbooks and configuration documentation that support knowledge transfer and repeatable operations.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="role reveal">
+          <div class="role-meta"><p>Nov 2023 - Present</p><span>Remote</span></div>
+          <div class="role-body">
+            <p class="role-type">Freelance - Micro1</p><h3>Cloud Support Engineer</h3>
+            <ul>
+              <li>Manage EC2, S3, RDS, Lambda, and CloudFront across multiple concurrent client accounts, supporting system stability, availability, and secure configuration.</li>
+              <li>Advise clients on infrastructure configuration, IAM and S3 access controls, performance, and cost optimization for their AWS environments.</li>
+              <li>Diagnose production infrastructure and application issues through log analysis and root-cause investigation, documenting resolutions to reduce repeat incidents.</li>
+              <li>Validate deployments and configuration changes before and after release, identifying defects and confirming resolution ahead of client sign-off.</li>
+              <li>Serve as the first point of contact for client-reported issues, resolving or escalating cases with complete documentation and reproduction steps.</li>
+              <li>Automate recurring monitoring and operational validation with Python and Bash, improving consistency and reducing manual effort.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="role reveal">
+          <div class="role-meta"><p>Jan 2021 - Oct 2023</p><span>Remote and project-based</span></div>
+          <div class="role-body">
+            <p class="role-type">Independent projects</p><h3>Full Stack Python Developer</h3>
+            <ul>
+              <li>Deployed and monitored production applications on Linux and AWS, coordinated release cycles, and resolved post-deployment issues with clients.</li>
+              <li>Designed and maintained PostgreSQL and MySQL schemas, including query optimization, data-integrity checks, and migration management.</li>
+              <li>Built and validated REST APIs with Python, Django, and FastAPI for authentication, data processing, and third-party integrations.</li>
+              <li>Reviewed requirements and acceptance criteria with clients before development, reducing rework during delivery.</li>
+              <li>Supported the full lifecycle from requirements through post-launch using Git, testing, and structured technical documentation.</li>
+              <li>Investigated and tracked reported defects through verified resolution and closure.</li>
+            </ul>
+          </div>
+        </article>
       </div>
+    </section>
 
-      <!-- AWS SAA -->
-      <div class="cert-box">
-        <img src="assets/aws sa.jpeg" alt="AWS SAA Logo" style="width:100px; height:auto; margin-bottom:1rem;">
-        <h3>AWS Solutions Architect – Associate</h3>
-        <p>Currently preparing for the SAA-C03 exam. Focused on designing secure and resilient cloud architecture.</p>
-        <a href="https://aws.amazon.com/certification/certified-solutions-architect-associate/" class="btn" target="_blank">About the Exam</a>
+    <section class="section projects" id="projects" aria-labelledby="projects-title">
+      <div class="section-label reveal"><span>03</span> Selected work</div>
+      <div class="section-heading-row reveal"><h2 class="section-title" id="projects-title">Built to solve.<br><span>Designed to last.</span></h2><p>Projects where infrastructure, automation, and practical problem-solving meet.</p></div>
+      <article class="featured-project reveal">
+        <div class="project-number">01 / FEATURED</div>
+        <div class="project-content">
+          <div><p class="project-kicker">Infrastructure as code · CI/CD · Security</p><h3>AWS Cloud Resume</h3><p>A production-style static portfolio delivered through CloudFront from a private S3 origin. Terraform manages the infrastructure, while GitHub Actions deploys with temporary OIDC credentials—no long-lived AWS keys.</p>
+            <ul class="project-outcomes"><li>Private origin with CloudFront OAC and SigV4</li><li>HTTPS-only global edge delivery</li><li>Automated deployment and cache invalidation</li></ul>
+          </div>
+          <div class="project-links"><a class="button button-light" href="https://d7kla1ca2zt2q.cloudfront.net" target="_blank" rel="noreferrer">View live</a><a class="text-link light" href="https://github.com/Copubah/aws-cloud-resume" target="_blank" rel="noreferrer">Source code</a></div>
+        </div>
+        <div class="architecture" aria-label="Architecture: GitHub pushes to GitHub Actions, which deploys Terraform and website assets to AWS CloudFront and S3">
+          <div class="arch-node"><small>Source</small><strong>GitHub</strong></div><span>to</span><div class="arch-node"><small>Automation</small><strong>Actions + OIDC</strong></div><span>to</span><div class="arch-node accent"><small>Edge</small><strong>CloudFront</strong></div><span>to</span><div class="arch-node"><small>Origin</small><strong>Private S3</strong></div>
+        </div>
+      </article>
+      <div class="project-list">
+        <article class="project-row reveal"><p class="project-index">02</p><div><p class="project-kicker">Security automation · Event-driven AWS</p><h3>S3 Bucket Security Detector</h3></div><p>Detects public S3 bucket configurations through CloudTrail and EventBridge, then uses Lambda to send real-time Slack alerts with optional automated remediation.</p><a href="https://github.com/Copubah/s3-bucket-detector" target="_blank" rel="noreferrer" aria-label="View S3 bucket security detector project on GitHub">View project</a></article>
+        <article class="project-row reveal"><p class="project-index">03</p><div><p class="project-kicker">High availability · Elastic infrastructure</p><h3>AWS HA Auto Scaling</h3></div><p>A highly available AWS architecture designed to maintain application capacity and scale infrastructure as demand changes.</p><a href="https://github.com/Copubah/aws-ha-autoscaling" target="_blank" rel="noreferrer" aria-label="View AWS high availability and auto scaling project on GitHub">View project</a></article>
+        <article class="project-row reveal"><p class="project-index">04</p><div><p class="project-kicker">Resilience · Multi-region AWS</p><h3>Multi-Region Disaster Recovery</h3></div><p>Terraform-managed primary and recovery regions with Route 53 failover, ECS and load balancers, cross-region S3 replication, an RDS replica, and CloudWatch monitoring.</p><a href="https://github.com/Copubah/aws-multi-region-disaster-recovery" target="_blank" rel="noreferrer" aria-label="View AWS multi-region disaster recovery project on GitHub">View project</a></article>
+        <article class="project-row reveal"><p class="project-index">05</p><div><p class="project-kicker">Application deployment</p><h3>FastAPI + PostgreSQL</h3></div><p>Cloud VM deployment with a PostgreSQL data layer, shell-based automation, and firewall configuration.</p><a href="https://github.com/Copubah/fastapi-app" target="_blank" rel="noreferrer" aria-label="View FastAPI and PostgreSQL project on GitHub">View project</a></article>
+        <article class="project-row reveal"><p class="project-index">06</p><div><p class="project-kicker">Cloud architecture</p><h3>AWS Three-Tier Architecture</h3></div><p>A layered AWS application design separating presentation, application logic, and data concerns.</p><a href="https://github.com/Copubah/3-tier-architecture-demo" target="_blank" rel="noreferrer" aria-label="View three-tier architecture project on GitHub">View project</a></article>
       </div>
+    </section>
 
-      <!-- HashiCorp Terraform -->
-      <div class="cert-box">
-        <img src="assets/terraform.jpeg" alt="Terraform Badge" style="width:100px; height:auto; margin-bottom:1rem;">
-        <h3>HashiCorp Certified: Terraform Associate</h3>
-        <p>In progress. Focused on infrastructure as code, modules, workspaces, and state management.</p>
-        <a href="https://developer.hashicorp.com/terraform/certification" class="btn" target="_blank">About the Exam</a>
+    <section class="section credentials" id="credentials" aria-labelledby="credentials-title">
+      <div class="section-label reveal"><span>04</span> Credentials & growth</div>
+      <div class="credentials-grid">
+        <div class="credential-intro reveal"><h2 class="section-title" id="credentials-title">Always learning.<br><span>Always shipping.</span></h2><p>Validated fundamentals, structured training, and a clear path toward deeper architecture expertise.</p></div>
+        <div class="credential-list">
+          <a class="credential reveal" href="https://www.credly.com/earner/earned/badge/36098b34-bfce-40f4-aea9-0a2af6c0053e" target="_blank" rel="noreferrer"><img src="assets/aws ccp.jpeg" alt="AWS Certified Cloud Practitioner badge" width="76" height="76"><div><small>Certified · 2025</small><h3>AWS Certified Cloud Practitioner</h3><p>Cloud concepts, security, technology, and billing.</p></div><span>View</span></a>
+          <a class="credential reveal" href="https://aws.amazon.com/training/restart/" target="_blank" rel="noreferrer"><img src="assets/restart.jpeg" alt="AWS re/Start graduate badge" width="76" height="76"><div><small>Graduate · 2025</small><h3>AWS re/Start</h3><p>Hands-on training in cloud, Linux, networking, and Python.</p></div><span>View</span></a>
+          <div class="credential reveal"><div class="credential-mark" aria-hidden="true">LF</div><div><small>Completed training · Linux Foundation</small><h3>LFS250: Kubernetes and Cloud Native Essentials</h3><p>Kubernetes fundamentals, cloud-native architecture, containers, and application orchestration.</p></div><span class="progress-pill">Completed</span></div>
+          <div class="credential reveal"><div class="credential-mark" aria-hidden="true">PLP</div><div><small>Completed program · Power Learn Project</small><h3>Software Development Program</h3><p>Software development training with a specialization in software testing.</p></div><span class="progress-pill">Completed</span></div>
+          <div class="credential reveal"><div class="credential-mark" aria-hidden="true">MS</div><div><small>Software development · Moringa School</small><h3>Software Development Program</h3><p>Structured training in software development principles and practical application development.</p></div><span class="progress-pill">Completed</span></div>
+          <div class="credential reveal"><img src="assets/aws sa.jpeg" alt="AWS Solutions Architect Associate learning badge" width="76" height="76"><div><small>Learning path · In progress</small><h3>Solutions Architect Associate</h3><p>Secure, resilient, high-performing AWS architectures.</p></div><span class="progress-pill">Studying</span></div>
+          <div class="credential reveal"><img src="assets/terraform.jpeg" alt="HashiCorp Terraform learning badge" width="76" height="76"><div><small>Learning path · In progress</small><h3>Terraform Associate</h3><p>Infrastructure as code, state, modules, and workflows.</p></div><span class="progress-pill">Studying</span></div>
+        </div>
       </div>
+    </section>
 
-      <!-- AWS re/Start -->
-      <div class="cert-box">
-        <img src="assets/restart.jpeg" alt="AWS re/Start Logo" style="width:120px; height:auto; margin-bottom:1rem;">
-        <h3>AWS re/Start Graduate</h3>
-        <p>Completed in 2025 at eMobilis. Trained in cloud fundamentals, Linux, networking, and Python.</p>
-        <a href="https://aws.amazon.com/training/restart/" class="btn" target="_blank">Program Info</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <h2 class="heading">Contact <span>Me</span></h2>
-    <form action="https://formspree.io/f/mvgraolg" method="POST">
-      <div class="input-box">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Email Address" required />
-        <input type="text" name="subject" placeholder="Email Subject" />
-      </div>
-      <div class="input-box">
-        <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
-        <input type="submit" value="Send Message" class="btn" />
-      </div>
-    </form>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-text">
-      <p>&copy; 2025 Charles Opuba | All Rights Reserved.</p>
-    </div>
-    <div class="footer-iconTop">
-      <a href="#home"><i class="fa-solid fa-angle-up"></i></a>
-    </div>
-  </footer>
-
-  <script src="app.js"></script>
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="contact-inner reveal"><p class="eyebrow">Have a role, project, or cloud problem?</p><h2 id="contact-title">Let's build something<br><em>reliable.</em></h2><p>I'm open to opportunities in Cloud Engineering, DevOps, Site Reliability Engineering (SRE), and Production Support Engineering.</p><div class="contact-actions"><a class="button button-primary" href="mailto:charlesopuba@gmail.com">charlesopuba@gmail.com</a><a class="text-link" href="tel:+254707441272">+254 707 441 272</a><a class="text-link" href="https://www.linkedin.com/in/charles-opuba-94820574/" target="_blank" rel="noreferrer">LinkedIn</a></div></div>
+    </section>
+  </main>
+  <footer class="footer"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">CO</span><span>Charles Opuba</span></a><p>Built with intention. Deployed on AWS. <span data-year></span></p><a href="#home">Back to top</a></footer>
 </body>
-
 </html>
